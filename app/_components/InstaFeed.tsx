@@ -27,6 +27,10 @@ export default async function InstaFeed() {
     console.error("Error fetching Instagram feed:", err.message);
     error = err.message;
   }
+
+  const filteredFeed = instagramFeed?.data.filter(
+    (post: InstagramPost) => post.media_type !== "VIDEO"
+  );
   return (
     <>
       {error && <p className="text-red-500">{error}</p>}
@@ -35,7 +39,7 @@ export default async function InstaFeed() {
         <section className="w-full flex flex-col justify-center items-center">
           <h2 className="text-2xl font-semibold">Instagram Feed:</h2>
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {instagramFeed.data.map((post: InstagramPost) => (
+            {filteredFeed.map((post: InstagramPost) => (
               <div key={post.id} className="relative group w-full h-[300px]">
                 <Link
                   href={post.permalink}
