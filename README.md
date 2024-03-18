@@ -21,7 +21,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Learn how to add Instagram photos to your NextJS site using the Official Instagram Basic Display API. You can read the full tutorial on <a href="https://www.medium.com" className="text-blue-500 underline hover:no-underline hover:text-blue-700">Medium</a>.
+Learn how to add Instagram photos to your NextJS site using the Official Instagram Basic Display API. You can read the full tutorial on <a href="https://medium.com/the-balancing-act/how-to-add-instagram-photos-to-your-nextjs-site-using-the-official-api-74eb4ca034a0" className="text-blue-500 underline hover:no-underline hover:text-blue-700">Medium</a>.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -80,7 +80,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@joana_r_parente](https://twitter.com/joana_r_parente) - jrparente@gmail.com
+Joana Parente - [@joana_r_parente](https://twitter.com/joana_r_parente) - jrparente@gmail.com
 
 Project Link: [https://github.com/jrparente/nextjs-instagram](https://github.com/jrparente/nextjs-instagram)
 
