@@ -17,13 +17,12 @@ export default async function InstaFeed() {
   try {
     const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp,permalink&access_token=${process.env.IG_TOKEN}`;
     const data = await fetch(url);
-    console.log("data", data);
+
     if (!data.ok) {
       throw new Error("Failed to fetch Instagram feed");
     }
 
     instagramFeed = await data.json();
-    console.log("Instagram feed:", instagramFeed);
   } catch (err: any) {
     console.error("Error fetching Instagram feed:", err.message);
     error = err.message;
