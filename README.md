@@ -56,9 +56,9 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    npm install
    ```
-6. Create a `.env.local` file and add your INSTAGRAM_TOKEN
+6. Create a `.env.local` file and add your NEXT_PUBLIC_INSTAGRAM_TOKEN
    ```js
-   INSTAGRAM_TOKEN=.....;
+   NEXT_PUBLIC_INSTAGRAM_TOKEN=.....;
    ```
 7. Run your app with
    ```sh
