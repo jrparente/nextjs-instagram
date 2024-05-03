@@ -1,7 +1,10 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-interface InstagramPost {
+type InstagramPost = {
   id: string;
   caption: string;
   media_url: string;
@@ -10,23 +13,62 @@ interface InstagramPost {
   permalink: string;
 }
 
-export default async function InstaFeed() {
-  let instagramFeed = null;
-  let error = null;
-
-  try {
-    const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp,permalink&access_token=${process.env.IG_TOKEN}`;
-    const data = await fetch(url);
-
-    if (!data.ok) {
-      throw new Error("Failed to fetch Instagram feed");
-    }
-
-    instagramFeed = await data.json();
-  } catch (err: any) {
-    console.error("Error fetching Instagram feed:", err.message);
-    error = err.message;
+type InstagramPaging = {
+  cursors: {
+    before: string;
+    after: string;
   }
+}
+
+type InstagramFeed = {
+  data: InstagramPost[];
+  paging?: InstagramPaging;
+}
+
+export default function InstaFeed() {
+  const [instagramFeed, setInstagramFeed] = useState<InstagramFeed | null>(null);
+  const [after, setAfter] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchFeed = async (after: string | null = null) => {
+    try {
+      let url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp,permalink&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_TOKEN}`;
+      if (after) {
+        url += `&after=${after}`;
+      }
+      const data = await fetch(url);
+
+      if (!data.ok) {
+        throw new Error("Failed to fetch Instagram feed");
+      }
+
+      const feed = await data.json();
+      console.log(feed)
+
+      setInstagramFeed(prevFeed => {
+        if (prevFeed && prevFeed.data.length > 0) {
+          return {
+            ...feed,
+            data: [...prevFeed.data, ...feed.data]
+          };
+        }
+        return feed;
+      });
+      setAfter(feed.paging?.cursors.after);
+    } catch (err: any) {
+      console.error("Error fetching Instagram feed:", err.message);
+      setError(err.message);
+    }
+  };
+
+  const loadMore = () => {
+    fetchFeed(after);
+  };
+
+  // Fetch the initial feed
+  useEffect(() => {
+    fetchFeed();
+  }, []);
 
   return (
     <>
@@ -53,11 +95,10 @@ export default async function InstaFeed() {
                   ) : (
                     <Image
                       src={post.media_url}
-                      alt={post.caption}
+                      alt={post.caption ?? ""}
                       className="w-full h-full object-cover"
                       width={300}
                       height={300}
-                      priority
                     />
                   )}
 
@@ -70,6 +111,7 @@ export default async function InstaFeed() {
               </div>
             ))}
           </div>
+          {after && <button onClick={loadMore}>Load More</button>}
         </section>
       )}
     </>
