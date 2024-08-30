@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -11,22 +11,24 @@ type InstagramPost = {
   media_type: string;
   timestamp: string;
   permalink: string;
-}
+};
 
 type InstagramPaging = {
   cursors: {
     before: string;
     after: string;
-  }
-}
+  };
+};
 
 type InstagramFeed = {
   data: InstagramPost[];
   paging?: InstagramPaging;
-}
+};
 
 export default function InstaFeed() {
-  const [instagramFeed, setInstagramFeed] = useState<InstagramFeed | null>(null);
+  const [instagramFeed, setInstagramFeed] = useState<InstagramFeed | null>(
+    null
+  );
   const [after, setAfter] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -43,17 +45,10 @@ export default function InstaFeed() {
       }
 
       const feed = await data.json();
-      console.log(feed)
+      console.log(feed);
 
-      setInstagramFeed(prevFeed => {
-        if (prevFeed && prevFeed.data.length > 0) {
-          return {
-            ...feed,
-            data: [...prevFeed.data, ...feed.data]
-          };
-        }
-        return feed;
-      });
+      setInstagramFeed(feed);
+
       setAfter(feed.paging?.cursors.after);
     } catch (err: any) {
       console.error("Error fetching Instagram feed:", err.message);
