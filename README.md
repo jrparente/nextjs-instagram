@@ -17,22 +17,60 @@
 
 <!-- ABOUT THE PROJECT -->
 
+# How to Add Instagram Photos to Your Next.js Site
+
+> ⚠️ **Deprecated (December 2024)**
+> Meta shut down the Instagram Basic Display API. This project no longer works as described.
+> An updated version using the Instagram Graph API is coming. Watch this repo or check the [original Medium article](https://medium.com/@jrparente/how-to-add-instagram-photos-to-your-nextjs-site-using-the-official-api-74eb4ca034a0) for updates.
+
+---
+
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Learn how to add Instagram photos to your Next.js site using the Official Instagram Basic Display API. You can read the full tutorial on Medium.
 
-Learn how to add Instagram photos to your NextJS site using the Official Instagram Basic Display API. You can read the full tutorial on <a href="https://medium.com/the-balancing-act/how-to-add-instagram-photos-to-your-nextjs-site-using-the-official-api-74eb4ca034a0" className="text-blue-500 underline hover:no-underline hover:text-blue-700">Medium</a>.
+*Note: this tutorial was written in March 2024. The API it uses was deprecated in December 2024.*
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Built With
 
-### Built With
+- Next.js
 
-- [![Next][Next.js]][Next-url]
+## Getting Started
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Prerequisites
 
-<!-- GETTING STARTED -->
+- A Facebook developer account, and an Instagram public account with some media posted to it.
+- A Facebook app linked to your Instagram account, and a token generated through that app.
 
+### Installation
+
+1. Get your Facebook developer account at https://developers.facebook.com/
+2. Create a new app and link it to your Instagram account
+3. Generate a token for your Instagram account
+4. Clone the repo
+   ```
+   git clone https://github.com/jrparente/nextjs-instagram.git
+   ```
+5. Install NPM packages
+   ```
+   npm install
+   ```
+6. Create a `.env.local` file and add your NEXT_PUBLIC_INSTAGRAM_TOKEN
+   ```
+   NEXT_PUBLIC_INSTAGRAM_TOKEN=.....;
+   ```
+7. Run your app with `npm run dev`
+8. Open your browser at `http://localhost:3000`
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+## Contact
+
+Joana Parente — jrparente@gmail.com
+
+Project Link: https://github.com/jrparente/nextjs-instagram
 ## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
