@@ -7,14 +7,6 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-
-<h3 align="center">How to Add Instagram Photos to Your NextJS Site</h3>
-
-</div>
-
 <!-- ABOUT THE PROJECT -->
 
 # How to Add Instagram Photos to Your Next.js Site
